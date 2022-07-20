@@ -32,19 +32,30 @@ public class BankAccount{
     // Create a method that will allow a user to deposit money into either the checking or saving,
     // be sure to add to total amount stored.
     public void deposit(double amount, String accountType){
-        if (accountType == "checkingBalance"){
+        if (accountType == "checking balance"){
             checkingBalance += amount;
-        } else if (accountType == "savingsBalance"){
+        } else if (accountType == "savings balance"){
             savingsBalance += amount;
         }
     }
     // Create a method to withdraw money from one balance. Do not allow them to withdraw money if there are insufficient funds.
-    public String withdraw(double amount){
-        if (amount < checkingBalance){
-            checkingBalance -= amount;
-            return "your Balance now is: " + checkingBalance;
+    public String withdraw(double amount, String accountType){
+        if (accountType == "checking balance"){
+            if (amount < checkingBalance){
+                checkingBalance -= amount;
+                return "your Balance now is: " + checkingBalance;
+            } else {
+                return "you don't have enough balance";
+            }
+        } else if (accountType == "savings balance"){
+            if (amount < checkingBalance){
+                checkingBalance -= amount;
+                return "your Balance now is: " + checkingBalance;
+            } else {
+                return "you don't have enough balance";
+            }
         } else {
-            return "you don't have enough balance";
+            return "Please enter a valid account";
         }
     }
     // Create a method to see the total money from the checking and saving.
